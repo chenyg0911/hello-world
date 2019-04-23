@@ -14,8 +14,8 @@ steps:
   - echo hola
   - echo mundo
 
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour
-  - echo monde
+# - name: fr
+#   image: alpine
+#   commands:
+#   - echo bonjour
+#   - echo monde
