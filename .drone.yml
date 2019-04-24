@@ -24,7 +24,7 @@ steps:
     kubernetes_server: https://192.168.0.34:6443
     kubernetes_token: 
       from_secret: kube-token
-    namespace: app
+    namespace: drone-test
     deployment: drone-test
     repo: registry.datadynamic.io/moop/hello-world
     container: drone-test
