@@ -1,24 +1,14 @@
 kind: pipeline
-name: greeting
+name: build-image
 
 steps:
-- name: en
-  image: alpine
-  commands:
-  - echo hello
-  - echo world
-  when:
-    branch:
-    - release
-
-# - name: es
-#   image: alpine
-#   commands:
-#   - echo hola
-#   - echo mundo
-
-# - name: fr
-#   image: alpine
-#   commands:
-#   - echo bonjour
-#   - echo monde
+- name: build
+  image: plugins/docker
+  settings:
+    repo: registry.datadynamic.io/moop/hello-world
+    registry: registry.datadynamic.io
+    auto_tag: true
+    username:
+      from_secret: repo-username
+    password:
+      from_secret: repo-password
