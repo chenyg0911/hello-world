@@ -2,18 +2,18 @@ kind: pipeline
 name: build-image
 
 steps:
-- name: get-tag
-  image: alpine
-  commands:
-  # - echo -n `date +"%Y%m%d-%H%M%S"` > .tags
-  - export TAG=`date +"%Y%m%d-%H%M%S"`
+# - name: get-tag
+#   image: alpine
+#   commands:
+#   # - echo -n `date +"%Y%m%d-%H%M%S"` > .tags
+#   - export TAG=`date +"%Y%m%d-%H%M%S"`
 
 - name: build
   image: plugins/docker
   settings:
     repo: registry.datadynamic.io/moop/hello-world
     registry: registry.datadynamic.io
-    tags: "${TAG}"
+    tags: "$(git-buildnumber)"
     username:
       from_secret: repo-username
     password:
