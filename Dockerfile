@@ -1,3 +1,3 @@
 From alpine
 
-CMD ["sh", "date"]
+CMD ["sh", "echo","hello"]
