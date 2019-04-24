@@ -13,7 +13,7 @@ steps:
   settings:
     repo: registry.datadynamic.io/moop/hello-world
     registry: registry.datadynamic.io
-    tags: "$(git-buildnumber)"
+    tags: "${DRONE_TAG}"
     username:
       from_secret: repo-username
     password:
@@ -21,3 +21,6 @@ steps:
   # when:
   #   branch:
   #   - release
+    when:
+      event:
+      - tag
