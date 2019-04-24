@@ -21,6 +21,6 @@ steps:
   # when:
   #   branch:
   #   - release
-    when:
-      event:
-      - tag
+  when:
+    event:
+    - tag
