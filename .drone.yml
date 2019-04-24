@@ -21,7 +21,7 @@ steps:
 - name: k8s-deploy
   image: quay.io/honestbee/drone-kubernetes
   settings:
-    kubernetes_server: https://192.168.0.34:6443
+    kubernetes_server: https://192.168.0.31:6443
     kubernetes_token: 
       from_secret: kube-token
     namespace: drone-test
