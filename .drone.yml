@@ -7,15 +7,18 @@ steps:
   commands:
   - echo hello
   - echo world
+  when:
+    branch:
+    - release
 
-- name: es
-  image: alpine
-  commands:
-  - echo hola
-  - echo mundo
+# - name: es
+#   image: alpine
+#   commands:
+#   - echo hola
+#   - echo mundo
 
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour
-  - echo monde
+# - name: fr
+#   image: alpine
+#   commands:
+#   - echo bonjour
+#   - echo monde
