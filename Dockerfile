@@ -1,3 +1,3 @@
 From alpine
 
-CMD ["sh", "echo","hello"]
+CMD ["sh", "-c","echo","hello"]
