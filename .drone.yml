@@ -12,3 +12,6 @@ steps:
       from_secret: repo-username
     password:
       from_secret: repo-password
+  when:
+    branch:
+    - release
