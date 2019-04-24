@@ -1,26 +1,31 @@
 kind: pipeline
-name: build-image
+name: helloworld-ci
 
 steps:
-# - name: get-tag
-#   image: alpine
-#   commands:
-#   # - echo -n `date +"%Y%m%d-%H%M%S"` > .tags
-#   - export TAG=`date +"%Y%m%d-%H%M%S"`
 
-- name: build
+- name: build-image
   image: plugins/docker
   settings:
     repo: registry.datadynamic.io/moop/hello-world
     registry: registry.datadynamic.io
-    tags: "${DRONE_TAG}"
+    # tags: "${DRONE_TAG}"
+    tags: "${DRONE_COMMIT}"
     username:
       from_secret: repo-username
     password:
       from_secret: repo-password
   # when:
-  #   branch:
-  #   - release
-  when:
-    event:
-    - tag
+  #   event:
+  #   - tag
+
+- name: k8s-deploy
+  image: quay.io/honestbee/drone-kubernetes
+  settings:
+    kubernetes_server: https://192.168.0.34:6443
+    kubernetes_token: 
+      from_secret: kube-token
+    namespace: app
+    deployment: drone-test
+    repo: registry.datadynamic.io/moop/hello-world
+    container: drone-test
+    tag: "${DRONE_COMMIT}"

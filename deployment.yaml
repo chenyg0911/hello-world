@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drone-test
+spec:
+  selector:
+    matchLabels:
+      app: drone-test
+  template:
+    metadata:
+      labels:
+        app: drone-test
+    spec:
+      containers:
+      - name: drone-test
+        image: registry.datadynamic.io/moop/hello-world:v0.0.5
+        args: [
+                    "/bin/sh",
+                    "-c",
+                    "while true;do date;sleep 5; done"
+              ]
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
